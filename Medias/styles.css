@@ -1,27 +1,312 @@
 /* DEFAULT STYLING */
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+p {
+    font-family: 'Supermercado One', cursive;
+}
 img {
+    display: block;
     max-width: 100%;
 }
-/*LOGO AND LOGIN STYLING*/
-/* .logo-login {
-    margin-bottom: 50px;
-} */
-/* .logo {
-    border: 2px solid rgb(36, 7, 7);
-    max-width: 7rem;
-    max-height: 5rem;
+.sr-only { /*for screen-reader only so visually hidden*/
+    display: none;
+}
+.flex {
+    display: flex;
+    gap: clamp(1rem, 1.5rem, 2rem);
+}
+
+
+/*HEADER STYLING mobile-first; below 640px(40em)*/ 
+.primary-header {
+    background: whitesmoke;
+    /* border: 2px solid blue; */
+    border-block: 2px solid rgba(26, 6, 6, 0.493);
+    padding: .2rem;
+
+    position :fixed;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    z-index: 9999;
+}
+/* logo styling */
+ .logo {
+    /* border: 2px solid rgb(36, 7, 7); */
+    padding: .2rem;
 }
 .logo img {
-    width: auto;
-    max-height: 5rem;
+    /* border: 2px solid rgb(223, 9, 9); */
+    max-height: 4rem;
+    width: 5rem;
+    object-fit: cover;
 }
-.login {
-    border: 2px solid red;
+/* nav styling */
+.primary-navigation {
+    list-style-type: none;
+    /* border: 2px solid white; */
+    overflow-y: scroll;
+
+    position: fixed;
+    z-index: 1000; /*in relation to mobile-nav-toggle button*/
+    inset: 0 0 0 30%; /*inset is shorthand for top left right bottom */
+
+
+    flex-direction: column; /* makes the nav As be in column form not row */
+    padding: min(30vh, 10rem) 2rem;
+
+    /*background: hsl(0 10% 10% / 0.1); you can use the old comma way for hsl too*/
+    background-color: #af9746;
+
+    transform: translateX(100%); /*moves 100% of its own width to the right*/
+    transition: transform 350ms ease-in;
+}
+.primary-navigation[data-visible="true"] { /*if data-visible="true" then the width will pop back from the right due to setting translateX to 0%*/
+    transform: translateX(0%);
+}
+
+.mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url('Images/X-icon.svg');
+}
+.mobile-nav-toggle {
+    display: block; /*since its display:hidden for wider views n/b not display:contents*/
+    position: absolute;
+    top: 1.6rem;
+    right: .9rem;
+
+    z-index: 9999;
+    background-image: url("Images/bars-icon.svg");
+    background-color: transparent;
+    background-repeat: no-repeat; /*so that the icon doesn't repeat itself when width increases*/
+
+    width: 2rem;
+    border: 0;
+    aspect-ratio: 1; /*edits both width and height sizes*/
+
+}
+
+.mobile-nav-toggle:hover {
+    cursor: pointer;
+}
+.primary-navigation a {
+    text-decoration: none;
+    color:rgb(19, 18, 18);
+    border: .15em solid rgb(26, 24, 24);
+    padding: .3rem;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+/*to minimise transition when resizing screen [its not really necessary]*/
+.resize-animation-stopper * {
+    transition: none !important;
+    animation: none !important;
+}
+/* MEDIA QUERIES FOR HEADER SECTION */
+@media (min-width: 230px) and (max-width: 270px) {
+    .logo img {
+        width: 7rem;
+    }
+}
+@media (min-width: 271px) and (max-width: 400px) {
+    .logo img {
+        width: 9rem;
+    }
+}
+@media (min-width: 401px) and (max-width: 640px) {
+    .logo img {
+        width: 12rem;
+    }
+}
+
+/*HEADER IMAGE STYLING*/
+.header-image {
+    margin-top: 5.0rem;
+    z-index: 1000; /*in reltion to fixed header*/
+
+    /* border: 2px solid red; */
+    border-bottom: 2px solid rgba(51, 2, 2, 0.089);
+    position: relative;
+    height: 300px;
+
+    background-image: url("Images/header-image.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header-text {
+    background-color: rgba(248, 219, 219, 0.61);
+    text-align: center;
+    position: absolute;
+    border-radius: 1rem;
+    /* border: 2px solid blue; */
+    top: 50px;
+    bottom: 50px;
+    left: 60px;
+}
+.header-text span {
+    font-style: italic;
+    color: rgb(6, 131, 12);
+}
+.header-text h1 {
+    /* border: 2px solid rgb(9, 9, 10); */
+    margin-bottom: 1rem;
+}
+.header-text p {
+    /* border: 2px solid blue; */
+    padding: .5rem;
+    line-height: .9rem;
+}
+.mobile-header-text {
+    display: none;
+}
+.btn-booknow {
+    font-weight: bolder;
+    font-size: 1.005rem;
+
+    background-color: green;
+    color: whitesmoke;
+    border: 2px solid rgb(8, 8, 8);
+    border-radius: .2rem;
+    padding: .4rem 1rem;
+    margin: .2rem 0;
+}
+/* MEDIA QUERIES FOR HEADER-IMAGE SECTION */
+@media (max-width: 222px) {
+    .primary-navigation {
+        padding-left: .5rem;
+    }
+    .primary-navigation a {
+        padding: .2rem;
+        font-weight: bolder;
+        font-size: .6em;
+    }
+}
+@media (min-width: 100px) and (max-width: 300px) {
+    .header-image {
+        height: 200px;
+       
+        background-position: left;
+    }
+    .header-text {
+        display: none;
+    }
+    .mobile-header-text {
+        z-index: 1001; /*in relation to header-image*/
+        display: block;
+        background-color: #af9746;
+        color: rgb(13, 4, 51);
+        text-align: center;
+        border: 2px solid rgba(0, 0, 0, 0.192);
+        position: absolute;
+        top: 13rem;
+        left: 1.5rem;
+        right: 1.5rem;
+    }
+    .mobile-header-text h1 {
+        padding-block: .1rem;
+        font-size: 1.3rem;
+    }
+    .mobile-header-text p {
+        /* border: 2px solid red; */
+        padding-block: .2rem;
+        font-size: .9rem;
+        line-height: .9rem;
+    }
+}
+@media (min-width: 320px) {
+    .header-text p {
+        width: 90%;
+        margin: auto;
+    }
+}
+@media (min-width: 343px) {
+    .header-text p {
+        width: 70%;
+    }
+}
+@media (min-width: 353px) {
+    .header-text h1 {
+        width: 80%;
+        margin: auto;
+    }
+}
+@media (min-width: 420px) {
+    .header-text h1 {
+        font-size: 1.8rem;
+        width: 100%;
+        margin: auto;
+    }
+    .header-text p {
+        width: 70%;
+        font-size: 1.4rem;
+        line-height: 1.2rem;
+    }
+}
+@media (min-width: 460px) {
+    .header-text p {
+        width: 60%;
+    }
+    .btn-booknow {
+        margin-top: .5rem;
+    }
+}
+@media (min-width: 570px) {
+    .header-text {
+        top: 40px;
+        bottom: 40px;
+    }
+    .header-text h1 {
+        font-size: 2rem;
+    }
+    .header-text p {
+        font-size: 1.6rem;
+        line-height: 1.3rem;
+    }
+    .btn-booknow {
+        margin-block: .2rem;
+    }
+}
+@media (min-width: 587px)  and (max-width: 640px) {
+    .btn-booknow {
+        margin-block: .3rem;
+    }
+    .header-text p {
+        line-height: 1.45rem;
+    }
+}
+/* LINKS SECTION */
+/* .links {
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+ul {
+    list-style: none;
+    border :2px solid rgb(38, 0, 255);
+    padding: 5px;
+
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+li {
+    border :2px solid red;
+    padding: .5rem 1.5rem;
+}
+a {
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
 } */
 /* .grid {
     display: grid;
