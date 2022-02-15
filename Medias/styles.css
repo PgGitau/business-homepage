@@ -26,7 +26,7 @@ img {
 }
 
 
-/*HEADER STYLING mobile-first; below 640px(40em)*/ 
+/*HEADER STYLING mobile-first; below 640px(40em)*/
 .primary-header {
     /* justify-content: space-between; */
     background: whitesmoke;
@@ -137,13 +137,13 @@ img {
     }
     .primary-navigation {
         position: relative;
-        padding: 1rem 0; 
+        padding: 1rem 0;
         flex-direction: row;
         transform: none;
         inset: 0;
         overflow-y: hidden;
         /* border: 2px solid blue; */
-        background: 0;   
+        background: 0;
     }
     .primary-header {
         /* border: 2px solid rgb(12, 12, 12); */
@@ -180,7 +180,7 @@ img {
 }
 @media (min-width: 700px) {
     .logo img {
-        width: 11rem; 
+        width: 11rem;
     }
     .primary-navigation a {
         font-size: 1rem;
@@ -188,7 +188,7 @@ img {
 }
 @media (min-width: 800px) {
     .logo img {
-        width: 12rem; 
+        width: 12rem;
     }
     .primary-navigation a {
         padding: .4rem;
@@ -197,7 +197,7 @@ img {
 }
 @media (min-width: 1000px) {
     .logo img {
-        width: 14rem; 
+        width: 14rem;
     }
     .primary-navigation a {
         padding: .5rem;
@@ -267,10 +267,9 @@ img {
         font-size: .6em;
     }
 }
-@media (min-width: 100px) and (max-width: 300px) {
+@media (min-width: 100px) and (max-width: 299px) {
     .header-image {
         height: 200px;
-       
         background-position: left;
     }
     .header-text {
@@ -279,10 +278,10 @@ img {
     .mobile-header-text {
         z-index: 1001; /*in relation to header-image*/
         display: block;
-        background-color: #af9746;
+        background-color: rgba(248, 219, 219, 0.781);
         color: rgb(13, 4, 51);
         text-align: center;
-        border: 2px solid rgba(0, 0, 0, 0.192);
+        border: 2px solid rgba(0, 0, 0, 0.048);
         position: absolute;
         top: 13rem;
         left: 1.5rem;
@@ -402,6 +401,101 @@ img {
         margin: 3rem;
     }
 }
+
+/* ABOUT SECTION */
+.about {
+    text-align: center;
+    margin-block: 4rem;
+    /* margin-block: 1rem; */
+    width: 90%;
+    margin-inline: auto;
+    border-top: 2px solid rgb(122, 81, 3);
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.about > * {
+    flex-basis: 100%;
+}
+.about span {
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+}
+.about-us {
+    padding-block: 1rem;
+}
+.heading {
+    font-style: italic;
+    font-weight: bolder;
+    /* border: 2px solid red; */
+}
+.content {
+    border-block: 2px solid rgb(122, 81, 3);
+}
+.content p{
+    text-align: justify;
+    text-align-last: center;
+    line-height: 1rem;
+    font-weight: normal;
+}
+/* media queries for about section */
+@media (min-width: 100px) and (max-width: 299px) {
+    .about {
+        /* border-inline: 2px solid blue; */
+        position: relative;
+        top: 90px;
+    }
+}
+@media (min-width: 500px) {
+    .about {
+        flex-wrap: nowrap;
+        border-bottom: 2px solid rgb(122, 81, 3);
+        /* border-image: url("Images/dashiki1.webp") 30% repeat; */
+    }
+    .content {
+        border-block: 0;
+    }
+    .content p {
+        padding-inline: 1rem;
+        border-left: 2px solid rgb(122, 81, 3);
+    }
+}
+@media (min-width: 641px) {
+    .content p {
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+    }
+}
+@media (min-width: 1000px) {
+    .heading h1 {
+        font-size: 2rem;
+        width: 70%;
+        margin: auto;
+    }
+    .content p {
+        /* border: 2px solid rgb(15, 15, 20); */
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+    }
+}
+
+/* SERVICES SECTION STYLING */
+.services {
+    text-align: center;
+    height: 200px;
+    border-block: 20px solid transparent;
+    border-image: url("Images/dashiki1.webp") 7% round;
+   
+}
+/* media queries for services section */
+@media (min-width: 100px) and (max-width: 299px) {
+    .services {
+        position: relative;
+        top: 60px;
+    }
+}
 /* LINKS SECTION */
 /* .links {
     border: 2px solid black;
@@ -434,7 +528,7 @@ a {
     /* width: fit-content;
     height: 1000px; */
     /* grid-template: 30px repeat(6, 1fr) / repeat(4, 1fr); */
-    /* grid-template-areas: 
+    /* grid-template-areas:
       "logo . login"
       "about services team"
       "header-image header-image header-image"
